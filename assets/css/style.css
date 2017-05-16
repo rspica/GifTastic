@@ -1,0 +1,47 @@
+body {
+	font: 400 1.5em 'Roboto Mono', monospace;
+}
+.headline {
+	margin-top: 25px;
+	padding-bottom: 20px;
+	text-align: center;
+	font-size:2em;
+	border-bottom: 4px solid black;
+}
+
+input {
+	font-size: .5em;
+	color: rgba(0, 0, 0, .3);
+	border: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, .5);
+	border-left: 1px solid rgba(0, 0, 0, .5);
+	width: 100%;
+	margin-top: 25px;
+	padding: 10px;
+}
+input[type="text"]::placeholder {
+  color: rgba(100, 100, 100, .5);
+}
+
+input:focus,
+button:focus {
+	outline: none;
+	background: rgba(100, 100, 100, .1);
+}
+
+button {
+	padding: 15px;
+	margin-top: 20px;
+	color: rgba(255, 255, 255, .3);
+	background: rgb(83, 97, 163);
+	border: 0;
+}
+
+button:hover {
+	outline: none;
+	background: rgb(48, 58, 109)
+}
+
+
+
+
