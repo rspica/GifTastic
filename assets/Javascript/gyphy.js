@@ -32,43 +32,74 @@ var topics = ["napoleon dynomite", "ace ventura", "anchorman", "star wars", "the
 //----------------------------------------------- 
 
 $(document).ready(function() {
-	console.log("here");
     for (var i = 0; i < topics.length; i++) {
-    	console.log('i ' + i);
-    	console.log(topics[i]);
-        $("#gyphy-btn").append('<button type="button">' + topics[i] + '</button>');
-		}
+        movieBtn(topics[i]);
+    }
+
+
+    $(document.body).on("click keyup", "#submit-btn", function(e) {
+        event.preventDefault();
+        if ((e.type == 'keyup') && (e.keyCode == 13) && $(e.target).is('input')) return;
+        userSubmit();
+    });
 
 
 
+    function userSubmit() {
+        var movieTitle = $("#movieTitle").val().trim();
+        topics.push(movieTitle);
+        movieBtn(movieTitle);
+        gifPull(movieTitle);
+        //   	movieDupeCheck(movieTitle);
+    }
+
+    $("#gyphy-btn").on("click", ".button", function() {
+        var movie = $(this).attr("data-movie");
+        console.log("this: " + this);
+        gifPull(movie);
+    });
 
 
+    function gifPull(subject) {
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+            subject + "&api_key=dc6zaTOxFJmzC&limit=10";
 
-            // $("button").on("click", function() {
-            //     var topics = $(this).attr("data-movie");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
-    topics + "&api_key=dc6zaTOxFJmzC&limit=10";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).done(function(response) {
+            console.log(response);
+            var results = response.data;
+            for (var i = 0; i < results.length; i++) {
+                var gifContainer = $('<div class="gifImage">');
+                var ratingText = $('<p>').text("Rating: " + results[i].rating);
+                var gifImage = $('<img>');
 
-    $.ajax({
-    url: queryURL,
-    method: "GET"
-    }).done(function(response) {
-    console.log(response);
+                gifImage.attr("src", results[i].images.fixed_height.url);
+                gifContainer.append(ratingText);
+                gifContainer.append(gifImage);
+                $("#gifContainer").prepend(gifContainer);
+            }
+        });
+    }
+
+
+    // button maker
+    function movieBtn(movieTitle) {
+        $("#gyphy-btn").append('<button class="button" data-movie="' + movieTitle + '">' + movieTitle + '</button>');
+    }
+
+    // duplicate gif pull / button maker check
+    function movieDupeCheck(movieTitle) {
+        for (var i = 0; i < topics.length; i++) {
+            console.log("top: " + topics);
+            console.log('i: ' + i);
+            if (movieTitle === topics) {
+                console.log('matched');
+                break;
+            } else if (movieTitle !== topics) {
+                movieBtn(movieTitle);
+            }
+        }
+    }
 });
-            //         var results = response.data;
-
-            //         for (var i = 0; i < results.length; i++) {
-            //             var movieDiv = $('<div class="">');
-            //             var ratingText = $('<p>').text("Rating: " + results[i].rating);
-            //             var movieImage = $('<img>');
-
-            //             movieImage.attr("src", results[i].images.fixed_height.url);
-
-            //             movieDiv.append(ratingText);
-            //             movieDiv.append(movieImage);
-
-            //             $('#gifs-appear-here').prepend(movieDiv);
-            //         }
-            //     });
-
-            });

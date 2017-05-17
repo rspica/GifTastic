@@ -57,5 +57,19 @@ button:focus {
 	background: rgb(83, 97, 163);
 }
 
+#gifContainer {
+	margin-top: 25px;
+
+}
+
+.gifImage {
+		display: inline-block;
+		margin-right: 15px
+}
+
+p {
+	font-size: .5em;
+	padding: 10px;
+}
 
 
