@@ -25,6 +25,7 @@
 //-----------------------------------------------
 var topics = ["napoleon dynomite", "ace ventura", "anchorman", "star wars", "the matrix", "waynes world"];
 
+var movieTitle = $("#movieTitle").val().trim();
 
 
 //-----------------------------------------------
@@ -37,20 +38,24 @@ $(document).ready(function() {
     }
 
 
-    $(document.body).on("click keyup", "#submit-btn", function(e) {
+    $(document.body).on("keyup", "#movieTitle", function(e) {
         event.preventDefault();
-        if ((e.type == 'keyup') && (e.keyCode == 13) && $(e.target).is('input')) return;
+        if ((e.type === 'keyup') && (e.keyCode === 13)) {
+            userSubmit();
+        }
+    });
+
+    $(document.body).on("click", "#submit-btn", function(e) {
+        event.preventDefault();
         userSubmit();
     });
 
-
-
     function userSubmit() {
-        var movieTitle = $("#movieTitle").val().trim();
+ //       var movieTitle = $("#movieTitle").val().trim();
         topics.push(movieTitle);
         movieBtn(movieTitle);
         gifPull(movieTitle);
-        //   	movieDupeCheck(movieTitle);
+        //      movieDupeCheck(movieTitle);
     }
 
     $("#gyphy-btn").on("click", ".button", function() {
@@ -68,7 +73,7 @@ $(document).ready(function() {
             url: queryURL,
             method: "GET"
         }).done(function(response) {
-            console.log(response);
+            //           console.log(response);
             var results = response.data;
             for (var i = 0; i < results.length; i++) {
                 var gifContainer = $('<div class="gifImage">');
@@ -85,15 +90,15 @@ $(document).ready(function() {
 
 
     // button maker
-    function movieBtn(movieTitle) {
-        $("#gyphy-btn").append('<button class="button" data-movie="' + movieTitle + '">' + movieTitle + '</button>');
-    }
+    function movieBtn(title) { 
+                $("#gyphy-btn").append('<button class="button" data-movie="' + title + '">' + title + '</button>');
+            }
+     
+    
 
     // duplicate gif pull / button maker check
     function movieDupeCheck(movieTitle) {
         for (var i = 0; i < topics.length; i++) {
-            console.log("top: " + topics);
-            console.log('i: ' + i);
             if (movieTitle === topics) {
                 console.log('matched');
                 break;
