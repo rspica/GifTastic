@@ -1,16 +1,21 @@
 body {
 	font: 400 1.5em 'Roboto Mono', monospace;
+	max-width: 960px;
+
 }
 .headline {
 	margin: 25px 15px 0;
-	padding-bottom: 20px;
+	padding-bottom: 30px;
 	text-align: center;
 	font-size:2em;
-	border-bottom: 4px solid black;
+	color: rgba(0, 0, 0, .7);
+	border-bottom: 4px solid rgba(0, 0, 0, .7);
 }
 
 .inputArea {
-		margin: 25px 0;	
+	border: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, .5);
+	border-left: 1px solid rgba(0, 0, 0, .5);
 }
 
 .nopadding {
@@ -18,54 +23,62 @@ body {
    margin: 0 !important;
 }
 
+.form-border{
+	border: 0;
+}
+
+.btn-right {
+	margin-right: 25px;
+}
+
+.row-spacing {
+	margin-top: 25px;
+}
+
 input {
 	font-size: .5em;
-	color: rgba(0, 0, 0, .3);
-	border: 0;
-	border-bottom: 1px solid rgba(0, 0, 0, .5);
-	border-left: 1px solid rgba(0, 0, 0, .5);
-	width: 100%;
-	padding: 10px;
+	color: rgba(200, 0, 0, .3);
+
 }
 input[type="text"]::placeholder {
   color: rgba(100, 100, 100, .5);
 }
 
 button {
-	margin: 15px 15px 0 0;
-	padding: 5px;
+	padding: 10px;
 	font-size: .5em;
-	color: rgba(255, 255, 255, .7);
-	background: rgb(43, 61, 53);
+	color: rgba(255, 255, 255, 1);
+	background: rgb(0, 0, 255);
 	border: 0;
 }
 
-button:hover {
+.btn-style:hover {
 	outline: none;
-	background: rgb(48, 58, 109)
+	background: rgb(0, 0, 175);
 }
 
-input:focus,
-button:focus {
+.btn-style:focus {
 	outline: none;
-	background: rgba(100, 100, 100, .3);
+	background: rgba(0, 0, 100, 1);
 }
 
 .glyphicon {
-		font-size:.8em;
+	font-size:.8em;
 }
 
 #submit-btn {
-	padding: 5px 15px;
-	font-size: 1.2em;
-	color: rgba(255, 255, 255, .3);
-	background: rgb(83, 97, 163);
+	padding: 7px;
+	color: rgba(255, 255, 255, .7);
+	background: rgb(0, 0, 175);
+	border-radius: 0;
+	border: 0;
 }
 
-#gifContainer {
-	margin-top: 25px;
-
+#submit-btn:focus {
+	outline: none;
+	background: rgba(0, 0, 100, 1);
 }
+
 
 .gifImage {
 		display: inline-block;

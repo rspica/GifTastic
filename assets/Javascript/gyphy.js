@@ -52,8 +52,9 @@ $(document).ready(function() {
 
             $(document.body).on("click", "#submit-btn", function(e) {
                 event.preventDefault();
+                clickAudio.play(clickAudio);
                 userSubmit();
-                 $("#movieTitle").val("Search again");
+                $("#movieTitle").val("");
             });
 
             function userSubmit() {
@@ -123,7 +124,7 @@ $(document).ready(function() {
 
                 // button maker
                 function movieBtn(title) {
-                    $("#giphy-btn").append('<button class="button" data-movie="' + title + '">' + title + '</button>');
+                    $("#giphy-btn").append('<button class="button btn-right btn-style" data-movie="' + title + '">' + title + '</button>');
                 }
 
 });

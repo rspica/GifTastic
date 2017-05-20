@@ -19,22 +19,39 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 headline"> ("\ˈgif, ˈjif\")</div>
+            <div class="col-md-12 headline">(gif me)</div>
         </div>
 
-        <div class="row inputArea">
+
+
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="input-group row-spacing inputArea">
+                <input type="text"  id="movieTitle" class="form-control form-border" placeholder="&#128269; Search Giphy ">
+                <span class="input-group-btn">
+                <button class="btn btn-secondary btn-style" type="button" id="submit-btn" value="Submit"> Gif me <i class="fa fa-search" aria-hidden="true"></i></button>
+              </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+ 
+
+<!--         <div class="row inputArea">
             <form class="col-md-12 nopadding">
-                <br>
                 <input type="text" id="movieTitle" placeholder="&#128269; Search Giphy ">
                 <button type="button" id="submit-btn" value="Submit"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Gif me</button>
             </form>
-            </div>
+            </div> -->
 
-        <div class="row">
+        <div class="row row-spacing">
             <div id="giphy-btn" class="col-md-10">
             </div>
         </div>
-        <div class="row">
+        <div class="row row-spacing">
           <div id="gifContainer" class="col-md-12"></div>
         </div>
     </div>
