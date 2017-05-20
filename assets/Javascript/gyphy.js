@@ -42,7 +42,8 @@ $(document).ready(function() {
         movieBtn(topics[i]);
     }
 
-
+    console.log(movieTitle);
+    console.log("input: " + $("#movieTitle").val(""));
     $(document.body).on("keyup", "#movieTitle", function(e) {
         event.preventDefault();
         if ((e.type === 'keyup') && (e.keyCode === 13)) {
@@ -60,13 +61,17 @@ $(document).ready(function() {
     });
 
     function userSubmit() {
-        var movieTitle = $("#movieTitle").val().trim();
-        $("#gifContainer").empty();
-        console.log('movie entered line 65: ' + movieTitle)
-        topics.push(movieTitle);
-        //       movieBtn(movieTitle);
-        //       gifPull(movieTitle);
-        movieDupeCheck(movieTitle);
+        if ($("#movieTitle").val().trim() == "") {
+            alert('No entry bro!')
+        } else {
+            var movieTitle = $("#movieTitle").val().trim();
+            $("#gifContainer").empty();
+            console.log('movie entered line 65: ' + movieTitle)
+            topics.push(movieTitle);
+            //       movieBtn(movieTitle);
+            //       gifPull(movieTitle);
+            movieDupeCheck(movieTitle);
+        }
     }
 
     $("#giphy-btn").on("click", ".button", function() {
@@ -133,26 +138,23 @@ $(document).ready(function() {
     function movieDupeCheck(movieTitle) {
         var counter = 1;
         for (var i = 0; i < topics.length; i++) {
-            console.log("tlength:" + topics.length)
-
-            console.log('i: ' + i);
-            console.log("topics: " + topics[i]);
-            console.log("movieTitle: " + movieTitle);
-
-            if (movieTitle == topics[i]) {
-                console.log('this ' + movieTitle + ' was already entered!');
+            if (movieTitle == topics[i]) {;
+                alert(movieTitle + ' has already been entered!')
                 continue;
             }
+
             if (movieTitle != topics[i]) {
                 counter++;
                 console.log("counter: " + counter);
             }
+
             if (counter == topics.length) {
                 console.log("creating a new button");
                 topics.push(movieTitle);
                 movieBtn(movieTitle);
                 gifPull(movieTitle);
-            } else if (counter == topics.length-1) {
+
+            } else if (counter == topics.length - 1) {
                 console.log("That's a repeat bro");
             }
         }
