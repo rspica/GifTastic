@@ -136,14 +136,16 @@ $(document).ready(function() {
 
     // duplicate gif pull / button maker check
     function movieDupeCheck(movieTitle) {
-        var counter = 1;
+        var counter = 0;
         for (var i = 0; i < topics.length; i++) {
-            if (movieTitle == topics[i]) {;
+            if (movieTitle === topics[i]) {;
+                console.log("in == movieTitle: " + " " + movieTitle + " topics "+i +" " + topics[i]);
                 alert(movieTitle + ' has already been entered!')
                 continue;
             }
 
             if (movieTitle != topics[i]) {
+                console.log("in != movieTitle: " + movieTitle + " topics"+i + " " + topics[i]);
                 counter++;
                 console.log("counter: " + counter);
             }
@@ -154,7 +156,10 @@ $(document).ready(function() {
                 movieBtn(movieTitle);
                 gifPull(movieTitle);
 
-            } else if (counter == topics.length - 1) {
+            } 
+
+            if (counter === topics.length - 1) {
+                console.log("counter: " + counter + " --topiclength: " + topics.length);
                 console.log("That's a repeat bro");
             }
         }
