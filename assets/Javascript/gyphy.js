@@ -42,7 +42,6 @@ $(document).ready(function() {
         movieBtn(topics[i]);
     }
 
-    console.log(movieTitle);
     console.log("input: " + $("#movieTitle").val(""));
     $(document.body).on("keyup", "#movieTitle", function(e) {
         event.preventDefault();
@@ -66,8 +65,8 @@ $(document).ready(function() {
         } else {
             var movieTitle = $("#movieTitle").val().trim();
             $("#gifContainer").empty();
-            console.log('movie entered line 65: ' + movieTitle)
-            topics.push(movieTitle);
+            console.log('movie entered line 68: ' + movieTitle)
+            //topics.push(movieTitle);
             //       movieBtn(movieTitle);
             //       gifPull(movieTitle);
             movieDupeCheck(movieTitle);
@@ -129,6 +128,7 @@ $(document).ready(function() {
 
     // subjects button maker
     function movieBtn(title) {
+        clickAudio.play(clickAudio);
         $("#giphy-btn").append('<button class="button btn-right btn-style" data-movie="' + title + '">' + title + '</button>');
     }
 
@@ -140,21 +140,22 @@ $(document).ready(function() {
         for (var i = 0; i < topics.length; i++) {
             if (movieTitle === topics[i]) {;
                 console.log("in == movieTitle: " + " " + movieTitle + " topics "+i +" " + topics[i]);
-                alert(movieTitle + ' has already been entered!')
+    //            alert(movieTitle + ' has already been entered!')
                 continue;
             }
 
             if (movieTitle != topics[i]) {
-                console.log("in != movieTitle: " + movieTitle + " topics"+i + " " + topics[i]);
+                console.log("in != movieTitle: " + movieTitle + " /topics"+i + "= " + topics[i]);
                 counter++;
                 console.log("counter: " + counter);
             }
 
             if (counter == topics.length) {
-                console.log("creating a new button");
+        console.log("creating a new button");
                 topics.push(movieTitle);
                 movieBtn(movieTitle);
                 gifPull(movieTitle);
+        console.log("push topic: " + topics.push(movieTitle));
 
             } 
 
